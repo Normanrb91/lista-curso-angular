@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button color="success" defaultHref="/cursos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{curso.nombre}}</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="editar()">
+        <ion-icon name="create" slot="icon-only"> </ion-icon>
+      </ion-button>
+      <ion-button (click)="eliminarCurso()">
+        <ion-icon name="trash" slot="icon-only"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid >
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-img [src]="curso.foto | noimage"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">Puntuacion: {{ curso.puntuacion }}</h1>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+

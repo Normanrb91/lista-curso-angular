@@ -1,0 +1,16 @@
+:root {
+    --ion-color-success: #2dd36f;  
+}
+  
+.label-color-success {
+    --highlight-color-focused: var(--ion-color-success) !important;
+}
+  
+ion-item.item-has-focus > ion-label{
+    color:  #2dd36f  !important;
+}
+
+
+.err{
+    color: #eb445a;
+}

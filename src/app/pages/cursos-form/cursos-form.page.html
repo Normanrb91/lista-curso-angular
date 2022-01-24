@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button color="success" defaultHref="/cursos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{!curso ? 'Agregar Curso' : 'Modificar Curso'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid>
+
+    <form [formGroup]="formCurso">
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-item class="label-color-success">
+          <ion-label>Nombre: </ion-label>
+          <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <span *ngIf="nombre.invalid && nombre.touched" class="err">{{messageError('nombre')}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-item class="label-color-success">
+          <ion-label>Puntuacion: </ion-label>
+          <ion-select formControlName="puntuacion">
+            <ion-select-option 
+                *ngFor="let nota of notas" 
+                [value]="nota">{{nota}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <span *ngIf="puntuacion.invalid && puntuacion.touched" class="err">{{messageError('puntuacion')}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <div class="ion-text-center ">
+          <ion-img *ngIf="foto" [src]="foto"></ion-img>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <div class="ion-text-center">
+          <ion-button (click)="agregarImagen()" color="success">Añadir imagen
+            <ion-icon slot="start" name="image"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-button *ngIf="!curso" (click)="agregarCurso()" expand="block" color="dark">Agregar Curso</ion-button>
+        <ion-button *ngIf=" curso" (click)="modificarCurso()" expand="block" color="dark">Modificar Curso</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+
+  </ion-grid>
+
+</ion-content>
